@@ -1,0 +1,29 @@
+<h5>Type the server name</h5>
+<input class="form-control" (input)="changeServerName($event)" />
+<p [innerText]="serverName" *ngIf="hasCreateNewServer; else noServer"></p>
+<ng-template #noServer>
+  <p>no Server added</p>
+</ng-template>
+<button class="btn btn-primary m-3" name="test" [disabled]="isButtonEnable" (click)="createNewServer()">
+  Add a New Server
+</button>
+<p>server with id:{{server1ID}} is working, it status is : {{getServerStatus()}}</p>
+<p>server with id:{{server2ID}} is working, it status is : {{getServerStatus()}}</p>
+
+
+<input type="text" class="form-control" [(ngModel)]="personNameInput">
+<p>the person name inputed is: {{personNameInput}} </p>
+<button class="btn btn-success mb-3" [disabled]="!personNameInput" (click)="clearName()"> click to clear </button>
+
+<br>
+<button class="btn btn-warning my-3" (click)="displayItem = !displayItem;logAction()"> display details </button>
+<div *ngIf="displayItem">
+  <p>the password is TUNA</p>
+</div>
+<div>
+  <h5>The log of clicked times</h5>
+  <p *ngFor="let log of logArray;let i = index" [ngStyle]="{'backgroundColor':i>=5?'blue':'transparent'}"
+    [ngClass]="{'whiteText':i>=5}">
+    {{log}}
+  </p>
+</div>
